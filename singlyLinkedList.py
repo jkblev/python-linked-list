@@ -193,7 +193,7 @@ class SinglyLinkedList:
 			currNode = currNode.getNext()
 
 	# Find nth node from the end of a Linked List
-	def findNodePosFromEnd(self, n):
+	def bruteForceFindNodePosFromEnd(self, n):
 		length = 0
 		current = self.head
 		while (current is not None):
@@ -201,6 +201,7 @@ class SinglyLinkedList:
 			current = current.getNext()
 
 		if (length-1 < n):
+			print("List is too short")
 			return None
 		else:
 			posFromBeginning = length - n
@@ -210,4 +211,23 @@ class SinglyLinkedList:
 				counter += 1
 				current = current.getNext()
 			return current
+
+	# Improve the complexity of finding nth node from the
+	# end of a Linked List
+	def findNodePosFromEnd(self, n):
+		length = 0
+		indexedList = {}
+		current = self.head
+		while (current is not None):
+			indexedList[length] = current
+			current = current.getNext()
+			length += 1
+
+		if (length-1 < n):
+			print("List is too short")
+			return None
+		else:
+			posFromBeginning = length - n - 1
+			print("posFromBeginning = " + str(posFromBeginning))
+			return indexedList[posFromBeginning]
 
