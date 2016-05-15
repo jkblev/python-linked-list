@@ -176,8 +176,8 @@ class SinglyLinkedList:
 		if pos > self.length or pos < 0:
 			print("The position does not exist. Please enter a valid position.")
 		else:
-			while currentNode.getNext() != None or counter < pos:
-				counter += 1
+			while currentNode.getData() != None or counter < pos:
+
 				if counter == pos:
 					previousNode.setNext(currentNode.getNext())
 					self.length -= 1
@@ -185,6 +185,7 @@ class SinglyLinkedList:
 				else:
 					previousNode = currentNode
 					currentNode = currentNode.getNext()
+				counter += 1
 
 	def printList(self):
 		currNode = self.head
@@ -249,3 +250,22 @@ class SinglyLinkedList:
 			if (fastPointer == slowPointer):
 				return True
 			slowPointer = slowPointer.getNext()
+
+	# Function to remove duplicates from linked list
+	def removeDuplicates(self):
+		listData = {}
+		current = self.head
+		index = 0
+		# Traverse the whole linked list
+		while (current is not None):
+			currData = current.getData()
+			# If the data is already indexed, delete this node
+			if currData in listData.keys():
+				current = current.getNext()
+				self.deleteAtPosition(index)
+				self.printList()
+
+			else:
+				listData[currData] = True
+				current = current.getNext()
+				index += 1
