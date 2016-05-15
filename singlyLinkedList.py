@@ -231,3 +231,21 @@ class SinglyLinkedList:
 			print("posFromBeginning = " + str(posFromBeginning))
 			return indexedList[posFromBeginning]
 
+
+	
+	def detectCycle(self):
+		fastPointer = self.head
+		slowPointer = self.head
+
+		while (fastPointer and slowPointer):
+			fastPointer = fastPointer.getNext()
+			if (fastPointer == slowPointer):
+				return True
+
+			if fastPointer == None:
+				return False
+
+			fastPointer = fastPointer.getNext()
+			if (fastPointer == slowPointer):
+				return True
+			slowPointer = slowPointer.getNext()
