@@ -187,8 +187,27 @@ class SinglyLinkedList:
 					currentNode = currentNode.getNext()
 
 	def printList(self):
-
 		currNode = self.head
 		while currNode is not None:
 			print(str(currNode))
 			currNode = currNode.getNext()
+
+	# Find nth node from the end of a Linked List
+	def findNodePosFromEnd(self, n):
+		length = 0
+		current = self.head
+		while (current is not None):
+			length += 1
+			current = current.getNext()
+
+		if (length-1 < n):
+			return None
+		else:
+			posFromBeginning = length - n
+			counter = 0
+			current = self.head
+			while (counter < posFromBeginning-1):
+				counter += 1
+				current = current.getNext()
+			return current
+
