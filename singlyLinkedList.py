@@ -229,7 +229,6 @@ class SinglyLinkedList:
 			return None
 		else:
 			posFromBeginning = length - n - 1
-			print("posFromBeginning = " + str(posFromBeginning))
 			return indexedList[posFromBeginning]
 
 
@@ -269,3 +268,14 @@ class SinglyLinkedList:
 				listData[currData] = True
 				current = current.getNext()
 				index += 1
+
+	# Given only a node, delete it from the linked list
+	def deleteNode(self, node):
+		nextNode = node.getNext()
+		if nextNode.getData() is not None:
+			node.setData(nextnode.getData())
+			node.setNext(nextnode.getNext())
+		else:
+			node.setData(None)
+			node.setNext(None)
+
