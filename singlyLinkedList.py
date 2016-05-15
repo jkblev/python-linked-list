@@ -81,10 +81,13 @@ class SinglyLinkedList:
 		newTail.setData(data)
 
 		current = self.head
-		while (current.getNext() != None):
+		while (current is not None and current.getNext() != None):
 			current = current.getNext()
 
-		current.setNext(newNode)
+		if (current == None):
+			self.head = self.tail = newTail
+		else: 
+			current.setNext(newTail)
 		self.length += 1
 
 	# Method to delete the last node of a linked list
